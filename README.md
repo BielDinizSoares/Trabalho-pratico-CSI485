@@ -18,9 +18,9 @@
 | Tarefa                                                                                     | Responsável (Membro) |
 |-------------------------------------------------------------------------------------------|----------------------|
 | Criar protótipo da tela de gerenciamento de disciplinas no Figma                          | Membro: Arthur       |
-| Criar estrutura do banco de dados: tabela `disciplinas` com campos `id`, `nome`, `código` | Membro: Iaggo        |
-| Criar entidade, repositório e serviço `Disciplina` no backend (Spring Boot)               | Membro: Victor       |
-| Implementar endpoints REST: `GET`, `POST`, `PUT`, `DELETE`                                | Membro: Gabriel      |
+| Criar estrutura do banco de dados: tabela disciplinas com campos id, nome, código         | Membro: Iaggo        |
+| Criar entidade, repositório e serviço Disciplina no backend (Spring Boot)                 | Membro: Victor       |
+| Implementar endpoints REST: GET, POST, PUT, DELETE                                        | Membro: Gabriel      |
 | Testar endpoints da API com Postman                                                       | Membro: Gabriel      |
 | Criar página React com formulário para adicionar/editar disciplina                        | Membro: Luiz         |
 | Criar componente React para listar disciplinas                                            | Membro: Luiz         |
