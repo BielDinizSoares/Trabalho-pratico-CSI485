@@ -12,8 +12,3 @@
 | *BAIXA*    | Como *usuário*, gostaria de **customizar as cores da interface** para ter uma experiência mais pessoal e agradável.    |
 | *BAIXA*    | Como *aluno*, gostaria de **visualizar notas de aula vinculadas às tarefas**, sem poder editá-las.                     |
 
-| Prioridade | Sprint Backlog
-
-|            |  História 1: Como *administrador*, gostaria de **gerenciar (criar, editar, excluir e listar) disciplinas** no sistema. | 
-                 Implementar lógica no backend: Víctor Emanuel
-                 Implementar tela visual para o usuário
