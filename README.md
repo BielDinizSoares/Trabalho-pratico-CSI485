@@ -1,14 +1,14 @@
-Backlog do produto:
-| Prioridade | User Story|
-| ---------- | --------------------------------------------------------------------------------------------|
-| ALTA   | Como usuário, gostaria de cadastrar disciplinas para organizar meus estudos.                    |
-| ALTA   | Como usuário, gostaria de fazer login e autenticação para acessar minhas informações.           |
-| ALTA   | Como usuário, gostaria de excluir uma disciplina que não estudo mais.                           |
-| ALTA   | Como usuário, gostaria de editar uma disciplina para corrigir ou atualizar informações.         |
-| ALTA   | Como usuário, gostaria de listar todas as minhas disciplinas cadastradas.                       |
-| ALTA   | Como usuário, gostaria de usar uma interface limpa e intuitiva para facilitar o uso.            |
-| MÉDIA  | Como usuário, gostaria de marcar uma disciplina como concluída para acompanhar meu progresso.   |
-| MÉDIA  | Como usuário, gostaria de atribuir tarefas às disciplinas para me organizar melhor.             |
-| MÉDIA  | Como administrador, gostaria de gerenciar as disciplinas dos alunos com permissões específicas. |
-| BAIXA  | Como usuário, gostaria de customizar as cores da interface para deixá-la com a minha cara.      |
-| BAIXA  | Como usuário, gostaria de adicionar notas de aula para registrar o conteúdo estudado.           |
+| Prioridade | User Story                                                                                                             |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------- |
+| *MÁXIMA*   | Como *administrador*, gostaria de **gerenciar (criar, editar, excluir e listar) disciplinas** no sistema.              |
+| *MÁXIMA*   | Como *administrador*, gostaria de **gerenciar (criar, editar, excluir e listar) professores** no sistema.              |
+| *MÁXIMA*   | Como *administrador*, gostaria de **gerenciar (criar, editar, excluir e listar) alunos** no sistema.                   |
+| *MÁXIMA*   | Como *administrador*, gostaria de **visualizar e gerenciar todas as tarefas** registradas no sistema.                  |
+| *MÁXIMA*   | Como *professor*, gostaria de **gerenciar (criar, editar, excluir e listar) tarefas** para as disciplinas que leciono. |
+| *MÁXIMA*   | Como *professor*, gostaria de **editar meu perfil** (nome, e-mail e senha).                                            |
+| *ALTA*     | Como *aluno*, gostaria de **visualizar as disciplinas e respectivas tarefas** que estou cursando.                      |
+| *ALTA*     | Como *usuário*, gostaria de **realizar login e autenticação** de forma segura para acessar minha conta.                |
+| *ALTA*     | Como *usuário*, gostaria de **navegar por uma interface limpa e intuitiva** para facilitar o uso do sistema.           |
+| *BAIXA*    | Como *usuário*, gostaria de **customizar as cores da interface** para ter uma experiência mais pessoal e agradável.    |
+| *BAIXA*    | Como *aluno*, gostaria de **visualizar notas de aula vinculadas às tarefas**, sem poder editá-las.                     |
+
