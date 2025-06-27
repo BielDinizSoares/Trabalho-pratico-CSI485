@@ -29,3 +29,19 @@
 | Realizar testes manuais completos via interface React                                     | Membro: Iaggo        |
 
 
+### 📋 Backlog Sprint: História #2
+
+| Tarefa                                                                                                      | Responsável (Membro) |
+|------------------------------------------------------------------------------------------------------------|----------------------|
+| Criar protótipo da tela de gerenciamento de professores no Figma                                           | Membro: Arthur       |
+| Criar estrutura do banco de dados: tabela professores com campos id, nome, email, departamento   | Membro: Iaggo        |
+| Criar entidade, repositório e serviço Professor no backend (Spring Boot)                                 | Membro: Victor       |
+| Implementar endpoints REST: GET, POST, PUT, DELETE                                                 | Membro: Gabriel      |
+| Testar endpoints da API com Postman                                                                        | Membro: Gabriel      |
+| Criar página React com formulário para adicionar/editar professor                                          | Membro: Luiz         |
+| Criar componente React para listar professores                                                             | Membro: Luiz         |
+| Conectar frontend com backend (consumir API REST)                                                          | Membro: Victor       |
+| Adicionar feedback visual (mensagens de sucesso, erro etc.)                                                | Membro: Arthur       |
+| Realizar testes manuais completos via interface React                                                      | Membro: Iaggo        |
+
+
