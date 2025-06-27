@@ -12,3 +12,25 @@
 | *BAIXA*    | Como *usuário*, gostaria de **customizar as cores da interface** para ter uma experiência mais pessoal e agradável.    |
 | *BAIXA*    | Como *aluno*, gostaria de **visualizar notas de aula vinculadas às tarefas**, sem poder editá-las.                     |
 
+
+## 🏁 Sprint 1: História #1  
+### 📌 User Story  
+**Como administrador, gostaria de gerenciar (criar, editar, excluir e listar) disciplinas no sistema.**
+---
+
+### 📋 Backlog de Tarefas
+
+| Tarefa                                                                                     | Responsável (Membro) |
+|-------------------------------------------------------------------------------------------|----------------------|
+| Criar protótipo da tela de gerenciamento de disciplinas no Figma                          | Membro: Arthur       |
+| Criar estrutura do banco de dados: tabela `disciplinas` com campos `id`, `nome`, `código` | Membro: Iaggo        |
+| Criar entidade, repositório e serviço `Disciplina` no backend (Spring Boot)               | Membro: Victor       |
+| Implementar endpoints REST: `GET`, `POST`, `PUT`, `DELETE`                                | Membro: Gabriel      |
+| Testar endpoints da API com Postman                                                       | Membro: Gabriel      |
+| Criar página React com formulário para adicionar/editar disciplina                        | Membro: Luiz         |
+| Criar componente React para listar disciplinas                                            | Membro: Luiz         |
+| Conectar frontend com backend (consumir API REST)                                         | Membro: Victor       |
+| Adicionar feedback visual (mensagens de sucesso, erro etc.)                               | Membro: Arthur       |
+| Realizar testes manuais completos via interface React                                     | Membro: Iaggo        |
+
+
