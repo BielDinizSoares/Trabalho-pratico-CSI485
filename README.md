@@ -13,12 +13,7 @@
 | *BAIXA*    | Como *aluno*, gostaria de **visualizar notas de aula vinculadas às tarefas**, sem poder editá-las.                     |
 
 
-## 🏁 Sprint 1: História #1  
-### 📌 User Story  
-**Como administrador, gostaria de gerenciar (criar, editar, excluir e listar) disciplinas no sistema.**
----
-
-### 📋 Backlog de Tarefas
+### 📋 Backlog Sprint: História #1
 
 | Tarefa                                                                                     | Responsável (Membro) |
 |-------------------------------------------------------------------------------------------|----------------------|
