@@ -70,7 +70,7 @@
 | Testar o endpoint administrativo via Postman                                              | Membro: Gabriel      |
 | Criar página React exclusiva para o administrador listar e excluir tarefas               | Membro: Luiz         |
 | Conectar essa interface com a API de tarefas existentes                                   | Membro: Victor       |
-| Adicionar filtros e ordenações úteis (por disciplina, data, professor, etc.)             | Membro: Arthur       |
+| Adicionar filtros e ordenações úteis (por disciplina, data, professor, etc.)             | Membro: Luiz          |
 | Adicionar feedback visual para ações administrativas (exclusão, falha, sucesso)          | Membro: Arthur       |
 | Realizar testes manuais simulando ações administrativas                                  | Membro: Iaggo        |
 
