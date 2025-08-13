@@ -90,6 +90,7 @@
 | Realizar testes manuais completos via interface React                                    | Membro: Iaggo        |
 
 ### Protótipo de Telas:
+
 <img width="756" height="539" alt="image" src="https://github.com/user-attachments/assets/756f5c46-9db5-4884-960c-19dbb0066a2a" />
 
 <img width="758" height="537" alt="image" src="https://github.com/user-attachments/assets/232ef50b-773f-4c3a-9553-6f5d95094f1b" />
@@ -97,6 +98,11 @@
 <img width="755" height="536" alt="image" src="https://github.com/user-attachments/assets/41873493-8122-4981-b0e6-15309f1079db" />
 
 <img width="836" height="594" alt="image" src="https://github.com/user-attachments/assets/2d89d0d0-62e6-414b-a5ce-184b73ca4961" />
+
+
+### Diagrama de Classes:
+
+<img width="926" height="729" alt="image" src="https://github.com/user-attachments/assets/632e23fb-86d5-44ba-b4da-9a7d04932177" />
 
 
 
