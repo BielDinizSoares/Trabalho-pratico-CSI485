@@ -104,6 +104,9 @@
 
 <img width="926" height="729" alt="image" src="https://github.com/user-attachments/assets/632e23fb-86d5-44ba-b4da-9a7d04932177" />
 
+### Diagrama de casos de uso:
+
+<img width="722" height="820" alt="image" src="https://github.com/user-attachments/assets/d6f551e6-aa71-4acf-8966-9dbaea1ba7ce" />
 
 
 
