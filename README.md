@@ -108,6 +108,43 @@
 
 <img width="722" height="820" alt="image" src="https://github.com/user-attachments/assets/d6f551e6-aa71-4acf-8966-9dbaea1ba7ce" />
 
+### Diagramas de atividade:
+
+## História 1:
+<img width="673" height="511" alt="image" src="https://github.com/user-attachments/assets/7a21587d-f76e-4fdf-b051-0448a02a445f" />
+
+
+## História 2:
+<img width="711" height="597" alt="image" src="https://github.com/user-attachments/assets/2d09c88a-4678-4717-b694-ca8e00b5ce29" />
+
+## História 3:
+<img width="686" height="551" alt="image" src="https://github.com/user-attachments/assets/9c4ed8c8-15fa-4a0a-8ce1-55c07d8f715e" />
+
+## História 4:
+<img width="764" height="538" alt="image" src="https://github.com/user-attachments/assets/d8a47b6a-c514-4c18-aba3-7542c2fb833a" />
+
+## História 5:
+<img width="674" height="574" alt="image" src="https://github.com/user-attachments/assets/78b7e836-2d41-42e8-99b7-e17b9ead01b3" />
+
+## História 6:
+<img width="657" height="511" alt="image" src="https://github.com/user-attachments/assets/453600f6-e8ce-4eb3-a9e9-9c63e3addbc4" />
+
+## História 7:
+<img width="863" height="620" alt="image" src="https://github.com/user-attachments/assets/3a16d66a-98b6-477d-bac8-d488412694cf" />
+
+## História 8:
+<img width="908" height="706" alt="image" src="https://github.com/user-attachments/assets/f54c6116-1e59-46cd-a04e-8e7715f75132" />
+
+## História 9:
+<img width="933" height="744" alt="image" src="https://github.com/user-attachments/assets/2fad709a-a686-4f1e-a24c-dfa2188e28cb" />
+
+## História 10:
+<img width="849" height="793" alt="image" src="https://github.com/user-attachments/assets/e71ae43e-645f-4dc7-b4e8-8f6aa22487ca" />
+
+## História 11:
+<img width="946" height="832" alt="image" src="https://github.com/user-attachments/assets/a09bebfe-9fb9-4257-91c0-d517309e7dde" />
+
+
 
 
 
