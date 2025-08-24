@@ -6,8 +6,8 @@ export function Login() {
       <h2>Login</h2>
       <form>
         <div>
-          <label htmlFor="username">Username</label>
-          <input type="text" id="username" placeholder='email'/>
+          <label htmlFor="Email">Email</label>
+          <input type="text" id="login" placeholder='email'/>
         </div>
         <div>
           <label htmlFor="password">Password</label>

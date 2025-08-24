@@ -1,14 +1,15 @@
 .header {
-    background-color: #FFFF;
+    width: calc(100% - 2rem);
+    margin: 1rem;
     padding: 20px;
-    color: #000000;
-    text-align: left;
-    height: 5rem;
-    width: 100%;
-    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
-
-    
+    box-shadow: 0 -5px 5px rgba(0,0,0,0.2), 0 5px 5px rgba(0,0,0,0.2);
+    background-color: #fff;
+    color: #000;
+    height: 4rem;
+    border-radius: 4px;
+    ;
 }
+
 .header h1 {
     margin: 0;
     font-size: 1.5rem;
