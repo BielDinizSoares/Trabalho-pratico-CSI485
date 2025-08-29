@@ -1,0 +1,42 @@
+.keyButtonsList {
+  display: flex;
+  flex-wrap: wrap; /* 🔑 quebra para a linha de baixo quando faltar espaço */
+  gap: 1rem;
+  margin: 2rem 6rem;
+  justify-content: flex-start;
+}
+
+.keyButton {
+  flex: 1 1 200px; /* ocupa pelo menos 200px e pode expandir */
+  max-width: 250px; /* evita esticar demais */
+  
+  height: 12rem;
+  padding: 1rem;
+  
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  transition: background-color 0.3s;
+  cursor: default; /* não precisa ser botão clicável */
+}
+
+.keyButton:hover {
+  background-color: #e0e0e0;
+}
+
+.keyButton h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.keyButton p {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  text-align: center;
+}

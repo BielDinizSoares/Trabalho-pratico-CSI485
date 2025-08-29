@@ -1,0 +1,28 @@
+.keyButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  margin: 2rem 6rem 0 6rem;
+  gap: 1rem; 
+}
+
+.keyButtons button {
+  flex: 1; 
+  
+  height: 12rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.keyButtons button + button {
+  margin-left: 1rem;
+}
+
+.keyButtons button:hover {
+  background-color: #e0e0e0;
+}
