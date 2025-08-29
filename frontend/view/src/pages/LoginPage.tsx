@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import styles from "../components/Login.module.css";
+
 
 function LoginPage() {
   const [role, setRole] = useState("alunos"); // aluno | professor | moderador
@@ -19,7 +21,7 @@ function LoginPage() {
       if (res.data) {
         alert("Login realizado com sucesso!");
 
-        if (role === "alunos") navigate("/students", { state: { id } });
+        if (role === "alunos") navigate(`/students/${id}`);
         if (role === "professores") navigate("/professor");
         if (role === "moderador") navigate("/moderator");
       }
@@ -29,7 +31,7 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <div className={styles["login-page"]}>
       <h1>Login</h1>
       <select value={role} onChange={(e) => setRole(e.target.value)}>
         <option value="alunos">Aluno</option>

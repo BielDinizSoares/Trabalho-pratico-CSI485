@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Header } from "../components/Header";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import "../components/StudentViewModule.css";
 
 interface Professor {
   id: number;
@@ -17,7 +18,7 @@ interface Tarefa {
 interface Disciplina {
   id: number;
   name: string;
-  professorId?: number; 
+  professorId?: number;
   tarefas?: Tarefa[];
 }
 
@@ -31,56 +32,56 @@ export function StudentView() {
   const [aluno, setAluno] = useState<Aluno | null>(null);
   const [professores, setProfessores] = useState<Professor[]>([]);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const alunoId = location.state?.id;
+  const { id } = useParams();
+  const alunoId = Number(id);
 
   useEffect(() => {
-    if(!alunoId) return
-    axios.get<Aluno>(`http://localhost:8080/alunos/${alunoId}`)
-      .then(res => setAluno(res.data))
-      .catch(err => console.error("Erro ao buscar aluno:", err));
+    if (!alunoId) return;
 
-    // Pega disciplinas
-    axios.get<Disciplina[]>(`http://localhost:8080/alunos/${alunoId}/disciplinas`)
-      .then(res => setAluno(prev => prev ? { ...prev, disciplinas: Array.isArray(res.data) ? res.data : [] } : null))
-      .catch(err => console.error("Erro ao buscar disciplinas:", err));
+    // Busca aluno e disciplinas ao mesmo tempo
+    const alunoPromise = axios.get<Aluno>(`http://localhost:8080/alunos/${alunoId}`);
+    const disciplinasPromise = axios.get<Disciplina[]>(`http://localhost:8080/alunos/${alunoId}/disciplinas`);
 
-    // Pega todos os professores
-    axios.get("http://localhost:8080/professores")
-      .then(res => {
-        
-        const profArray = Array.isArray(res.data) ? res.data : (res.data.professores ?? []);
-        setProfessores(profArray);
+    Promise.all([alunoPromise, disciplinasPromise])
+      .then(([alunoRes, disciplinasRes]) => {
+        setAluno({
+          ...alunoRes.data,
+          disciplinas: Array.isArray(disciplinasRes.data) ? disciplinasRes.data : []
+        });
       })
+      .catch(err => console.error("Erro ao buscar aluno ou disciplinas:", err));
+
+    // Busca professores separadamente
+    axios.get<Professor[]>("http://localhost:8080/professores")
+      .then(res => setProfessores(Array.isArray(res.data) ? res.data : []))
       .catch(err => console.error("Erro ao buscar professores:", err));
   }, [alunoId]);
 
-   if (!alunoId) return <p>ID do aluno não encontrado. Volte para o login.</p>;
+  if (!alunoId) return <p>ID do aluno não encontrado. Volte para o login.</p>;
   if (!aluno) return <p>Carregando...</p>;
 
+  const disciplinas = aluno.disciplinas ?? [];
+
   return (
-    <div>
+    <div className="student-view">
       <Header pageName="Página de Alunos" />
-      <button onClick={() => navigate("/")}>
+      <button className="logout-button" onClick={() => navigate("/")}>
         Sair
       </button>
 
       <h2>Disciplinas</h2>
-      {(aluno.disciplinas?.length ?? 0) > 0 ? (
-        aluno.disciplinas!.map(d => {
-          const prof = Array.isArray(professores)
-            ? professores.find(p => p.id === d.professorId)
-            : undefined;
+      {disciplinas.length > 0 ? (
+        disciplinas.map(d => {
+          const prof = professores.find(p => p.id === d.professorId);
+          const tarefas = d.tarefas ?? [];
 
           return (
-            <div key={d.id}>
-              <h3>
-                {d.name}
-              </h3>
-              <ul>
-                {(d.tarefas?.length ?? 0) > 0 ? (
-                  d.tarefas!.map(t => (
+            <div key={d.id} className="disciplina">
+              <h3>{d.name}</h3>
+              {prof && <p>Professor: {prof.name}</p>}
+              <ul className="tarefas">
+                {tarefas.length > 0 ? (
+                  tarefas.map(t => (
                     <li key={t.id}>{t.titulo}: {t.descricao}</li>
                   ))
                 ) : (
@@ -96,7 +97,7 @@ export function StudentView() {
 
       <h2>Professores</h2>
       {professores.length > 0 ? (
-        <ul>
+        <ul className="professor-list">
           {professores.map(p => <li key={p.id}>{p.name}</li>)}
         </ul>
       ) : (
