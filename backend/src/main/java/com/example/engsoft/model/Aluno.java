@@ -1,6 +1,7 @@
 package com.example.engsoft.model;
 
 import com.example.engsoft.model.Disciplina;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,11 +21,13 @@ public class Aluno {
     @Column(nullable = false)
     private String name;
 
+
     @ManyToMany
     @JoinTable(
             name = "rl_aluno_disciplina",
             joinColumns = @JoinColumn(name = "id_aluno"),
             inverseJoinColumns = @JoinColumn(name = "id_disciplina")
     )
+    @JsonBackReference
     private List<Disciplina> disciplinas;
 }

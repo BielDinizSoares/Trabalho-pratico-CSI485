@@ -34,16 +34,23 @@ public class AlunoController {
         return alunoRepository.save(aluno);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Aluno> atualizar(@PathVariable Long id, @RequestBody Aluno alunoAtualizado) {
+    @PatchMapping("/{id}")
+    public ResponseEntity<Aluno> atualizarParcial(@PathVariable Long id, @RequestBody Aluno alunoAtualizado) {
         return alunoRepository.findById(id)
                 .map(aluno -> {
-                    aluno.setName(alunoAtualizado.getName());
-                    aluno.setMatricula(alunoAtualizado.getMatricula());
-                    aluno.setDisciplinas(alunoAtualizado.getDisciplinas());
+                    if (alunoAtualizado.getName() != null) {
+                        aluno.setName(alunoAtualizado.getName());
+                    }
+                    if (alunoAtualizado.getMatricula() != null) {
+                        aluno.setMatricula(alunoAtualizado.getMatricula());
+                    }
+                    if (alunoAtualizado.getDisciplinas() != null) {
+                        aluno.setDisciplinas(alunoAtualizado.getDisciplinas());
+                    }
                     return ResponseEntity.ok(alunoRepository.save(aluno));
                 }).orElse(ResponseEntity.notFound().build());
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deletar(@PathVariable Long id) {
