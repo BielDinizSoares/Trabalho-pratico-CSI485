@@ -18,6 +18,7 @@ function App() {
           <Route path="/professor" element={<ProfessorView />} />
           <Route path="/disciplinaprofessor" element={<DisciplinaProfessor />} />
           <Route path="/disciplinasaluno" element={<DisciplinaAluno />} />
+          
 
         </Routes>
       </Router>

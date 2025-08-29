@@ -11,7 +11,17 @@ function LoginPage() {
 
   const handleLogin = async () => {
     if (!id) {
-      alert("Digite o ID!");
+      alert("Digite o ID ou senha!");
+      return;
+    }
+
+    if (role === "moderador") {
+      if (id === "1234") {
+        alert("Login de moderador realizado com sucesso!");
+        navigate("/moderator");
+      } else {
+        alert("Senha de moderador incorreta!");
+      }
       return;
     }
 
@@ -23,7 +33,7 @@ function LoginPage() {
 
         if (role === "alunos") navigate(`/students/${id}`);
         if (role === "professores") navigate("/professor");
-        if (role === "moderador") navigate("/moderator");
+        
       }
     } catch (error) {
       alert("Usuário não encontrado!");
@@ -40,10 +50,10 @@ function LoginPage() {
       </select>
 
       <input
-        type="text"
-        placeholder="Digite o ID"
-        value={id}
-        onChange={(e) => setId(e.target.value)}
+        type={role === "moderador" ? "password" : "text"}
+          placeholder={role === "moderador" ? "Digite a senha" : "Digite o ID"}
+          value={id}
+          onChange={(e) => setId(e.target.value)}
       />
 
       <button onClick={handleLogin}>Entrar</button>
