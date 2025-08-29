@@ -1,6 +1,7 @@
 package com.example.engsoft.model;
 
 import com.example.engsoft.model.Disciplina;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class Tarefa {
     @Column(nullable = false)
     private String titulo;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_disciplina", nullable = false)
     private Disciplina disciplina;
