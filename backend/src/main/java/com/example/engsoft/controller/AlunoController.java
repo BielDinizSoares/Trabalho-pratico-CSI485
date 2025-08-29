@@ -31,6 +31,7 @@ public class AlunoController {
 
     @PostMapping
     public Aluno criar(@RequestBody Aluno aluno) {
+
         return alunoRepository.save(aluno);
     }
 
@@ -59,5 +60,12 @@ public class AlunoController {
                     alunoRepository.delete(aluno);
                     return ResponseEntity.noContent().build();
                 }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/{id}/disciplinas")
+    public ResponseEntity<?> listarDisciplinasDoAluno(@PathVariable Long id) {
+        return alunoRepository.findById(id)
+                .map(aluno -> ResponseEntity.ok(aluno.getDisciplinas()))
+                .orElse(ResponseEntity.notFound().build());
     }
 }
