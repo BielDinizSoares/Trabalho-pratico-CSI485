@@ -1,21 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { Login } from './components/Login'
+import LoginPage from './pages/LoginPage'
 import { StudentView } from './pages/StudentView'
 import { ProfessorView } from './pages/ProfessorView'
 import { DisciplinaProfessor } from './pages/DisciplinaProfessor'
 import { DisciplinaAluno } from './pages/DisciplinaAluno'
 import {Moderar} from './pages/Moderar'
-
-
-
-function LoginPage() {
-  return (
-    <>
-      <Login />
-    </>
-  )
-}
 
 function App() {
   return (
