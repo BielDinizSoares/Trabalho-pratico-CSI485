@@ -12,9 +12,9 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path= "/" element={<Moderar />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path= "/moderator" element={<Moderar />} />
           <Route path="/students" element={<StudentView />} />
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/professor" element={<ProfessorView />} />
           <Route path="/disciplinaprofessor" element={<DisciplinaProfessor />} />
           <Route path="/disciplinasaluno" element={<DisciplinaAluno />} />

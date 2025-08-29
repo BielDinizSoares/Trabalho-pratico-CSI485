@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
-  const [role, setRole] = useState("aluno"); // aluno | professor | moderador
+  const [role, setRole] = useState("alunos"); // aluno | professor | moderador
   const [id, setId] = useState("");
   const navigate = useNavigate();
 
@@ -19,9 +19,9 @@ function LoginPage() {
       if (res.data) {
         alert("Login realizado com sucesso!");
 
-        if (role === "aluno") navigate("/students");
-        if (role === "professor") navigate("/professor");
-        if (role === "moderador") navigate("/");
+        if (role === "alunos") navigate("/students", { state: { id } });
+        if (role === "professores") navigate("/professor");
+        if (role === "moderador") navigate("/moderator");
       }
     } catch (error) {
       alert("Usuário não encontrado!");
@@ -32,8 +32,8 @@ function LoginPage() {
     <div>
       <h1>Login</h1>
       <select value={role} onChange={(e) => setRole(e.target.value)}>
-        <option value="aluno">Aluno</option>
-        <option value="professor">Professor</option>
+        <option value="alunos">Aluno</option>
+        <option value="professores">Professor</option>
         <option value="moderador">Moderador</option>
       </select>
 

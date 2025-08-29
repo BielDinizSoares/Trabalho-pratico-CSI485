@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Header } from "../components/Header";
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface Professor {
   id: number;
@@ -29,38 +30,54 @@ interface Aluno {
 export function StudentView() {
   const [aluno, setAluno] = useState<Aluno | null>(null);
   const [professores, setProfessores] = useState<Professor[]>([]);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const alunoId = location.state?.id;
 
   useEffect(() => {
-    // pega aluno
-    axios.get<Aluno>("http://localhost:8080/alunos/4")
+    if(!alunoId) return
+    axios.get<Aluno>(`http://localhost:8080/alunos/${alunoId}`)
       .then(res => setAluno(res.data))
-      .catch(err => console.error(err));
+      .catch(err => console.error("Erro ao buscar aluno:", err));
 
-    // pega disciplinas
-    axios.get<Disciplina[]>("http://localhost:8080/alunos/4/disciplinas")
-      .then(res => setAluno(prev => prev ? { ...prev, disciplinas: res.data } : null))
-      .catch(err => console.error(err));
+    // Pega disciplinas
+    axios.get<Disciplina[]>(`http://localhost:8080/alunos/${alunoId}/disciplinas`)
+      .then(res => setAluno(prev => prev ? { ...prev, disciplinas: Array.isArray(res.data) ? res.data : [] } : null))
+      .catch(err => console.error("Erro ao buscar disciplinas:", err));
 
-    // pega todos os professores
-    axios.get<Professor[]>("http://localhost:8080/professores")
-      .then(res => setProfessores(res.data))
-      .catch(err => console.error(err));
-  }, []);
+    // Pega todos os professores
+    axios.get("http://localhost:8080/professores")
+      .then(res => {
+        
+        const profArray = Array.isArray(res.data) ? res.data : (res.data.professores ?? []);
+        setProfessores(profArray);
+      })
+      .catch(err => console.error("Erro ao buscar professores:", err));
+  }, [alunoId]);
 
+   if (!alunoId) return <p>ID do aluno não encontrado. Volte para o login.</p>;
   if (!aluno) return <p>Carregando...</p>;
 
   return (
     <div>
       <Header pageName="Página de Alunos" />
+      <button onClick={() => navigate("/")}>
+        Sair
+      </button>
 
       <h2>Disciplinas</h2>
       {(aluno.disciplinas?.length ?? 0) > 0 ? (
         aluno.disciplinas!.map(d => {
-          
-          const prof = professores.find(p => p.id === d.professorId);
+          const prof = Array.isArray(professores)
+            ? professores.find(p => p.id === d.professorId)
+            : undefined;
+
           return (
             <div key={d.id}>
-              <h3>{d.name}</h3>
+              <h3>
+                {d.name}
+              </h3>
               <ul>
                 {(d.tarefas?.length ?? 0) > 0 ? (
                   d.tarefas!.map(t => (
