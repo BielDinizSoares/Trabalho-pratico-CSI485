@@ -2,19 +2,26 @@ import { useState } from "react"
 import styles from "./Form.module.css"
 
 interface AlunoFormProps {
-  onSubmit: (data: { matricula: string; name: string }) => void
+  onSubmit: (data: { matricula: string; name: string }) => Promise<void>
 }
 
 export function AlunoForm({ onSubmit }: AlunoFormProps) {
   const [matricula, setMatricula] = useState("")
   const [name, setName] = useState("")
+  const [message, setMessage] = useState("")
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!name.trim()) return
-    onSubmit({ matricula, name })
-    setMatricula("")
-    setName("")
+    try {
+      await onSubmit({ matricula, name }) // chama o pai
+      setMatricula("")
+      setName("")
+      setMessage("✅ Aluno cadastrado com sucesso!")
+      setTimeout(() => setMessage(""), 3000)
+    } catch (error) {
+      setMessage("❌ Erro ao cadastrar aluno")
+      setTimeout(() => setMessage(""), 3000)
+    }
   }
 
   return (
@@ -34,6 +41,8 @@ export function AlunoForm({ onSubmit }: AlunoFormProps) {
         required
       />
       <button type="submit">Salvar</button>
+
+      {message && <p className={styles.message}>{message}</p>}
     </form>
   )
 }

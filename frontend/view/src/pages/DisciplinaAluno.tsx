@@ -8,6 +8,8 @@ import { KeyButtonsList } from "../components/KeyButtonsList"
 //     Disciplina: string
 // }
 
+
+
 export function DisciplinaAluno(){//passar disciplinaprops aqui
 
     return (

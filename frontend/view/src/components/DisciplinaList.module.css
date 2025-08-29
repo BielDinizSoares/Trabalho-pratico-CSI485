@@ -4,7 +4,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background: #fafafa;
-  max-width: 600px;
+  max-width: 500px;
 }
 
 .list h2 {
@@ -39,29 +39,16 @@
   font-size: 1.1rem;
 }
 
-.actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.actions button {
-  padding: 0.4rem 0.8rem;
+.delete {
+  background: #f44336;
+  color: white;
   border: none;
   border-radius: 6px;
+  padding: 0.4rem 0.8rem;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-.actions button:hover {
+.delete:hover {
   opacity: 0.9;
-}
-
-.actions button:first-child {
-  background: #2196f3;
-  color: white;
-}
-
-.actions .delete {
-  background: #f44336;
-  color: white;
 }

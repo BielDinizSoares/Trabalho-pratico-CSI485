@@ -1,41 +1,48 @@
 import styles from "./DisciplinaList.module.css"
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 interface Disciplina {
   id: number
   name: string
   carga_horaria: number
   id_professor: number
+  professor_name?: string // opcional, se quiser mostrar
 }
 
 interface DisciplinaListProps {
-  disciplinas: Disciplina[]
   onAddAluno: (disciplinaId: number) => void
   onDelete: (disciplinaId: number) => void
 }
 
-export function DisciplinaList({ disciplinas, onAddAluno, onDelete }: DisciplinaListProps) {
+export function DisciplinaList({ onAddAluno, onDelete }: DisciplinaListProps) {
+  const [disciplinas, setDisciplinas] = useState<Disciplina[]>([])
+
+  useEffect(() => {
+    axios.get<Disciplina[]>("http://localhost:8080/disciplinas")
+      .then(res => setDisciplinas(res.data))
+      .catch(err => console.error("Erro ao carregar disciplinas:", err))
+  }, [])
+
   return (
     <div className={styles.list}>
       <h2>Lista de Disciplinas</h2>
-      {disciplinas.length === 0 ? (
-        <p>Nenhuma disciplina cadastrada.</p>
-      ) : (
+      {disciplinas.length > 0 ? (
         <ul>
-          {disciplinas.map((d) => (
+          {disciplinas.map(d => (
             <li key={d.id} className={styles.item}>
               <div className={styles.info}>
-                <strong>{d.name}</strong> ({d.carga_horaria}h)  
-                <span>ID Professor: {d.id_professor}</span>
+                <strong>{d.name}</strong>
+                <span>Carga horária: {d.carga_horaria}h</span>
+                <span>Professor: {d.professor_name ?? d.id_professor}</span>
               </div>
-              <div className={styles.actions}>
-                <button onClick={() => onAddAluno(d.id)}>+ Adicionar Aluno</button>
-                <button className={styles.delete} onClick={() => onDelete(d.id)}>
-                  Excluir
-                </button>
-              </div>
+              <button onClick={() => onAddAluno(d.id)}>Adicionar Aluno</button>
+              <button onClick={() => onDelete(d.id)}>Excluir</button>
             </li>
           ))}
         </ul>
+      ) : (
+        <p>Sem disciplinas cadastradas</p>
       )}
     </div>
   )

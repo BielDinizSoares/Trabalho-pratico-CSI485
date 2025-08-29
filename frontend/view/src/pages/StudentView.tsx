@@ -32,12 +32,12 @@ export function StudentView() {
 
   useEffect(() => {
     // pega aluno
-    axios.get<Aluno>("http://localhost:8080/alunos/4")
+    axios.get<Aluno>("http://localhost:8080/alunos/3")
       .then(res => setAluno(res.data))
       .catch(err => console.error(err));
 
     // pega disciplinas
-    axios.get<Disciplina[]>("http://localhost:8080/alunos/4/disciplinas")
+    axios.get<Disciplina[]>("http://localhost:8080/alunos/3/disciplinas")
       .then(res => setAluno(prev => prev ? { ...prev, disciplinas: res.data } : null))
       .catch(err => console.error(err));
 
