@@ -5,8 +5,8 @@ import { DisciplinaList } from "../components/DisciplinaList"
 import { ProfessorList } from "../components/ProfessorList"
 import { Header } from "../components/Header"
 import { ProfessorForm } from "../components/ProfessorForm"
-
 import styles from "./Moderar.module.css"
+
 
 export function Moderar() {
   return (

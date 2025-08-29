@@ -1,10 +1,10 @@
 import styles from "./ProfessorList.module.css"
 
-interface Professor {
+export interface Professor {
   id: number
   name: string
-  email: string
-  departamento: string
+  email?: string       
+  departamento?: string 
 }
 
 interface ProfessorListProps {
@@ -24,10 +24,13 @@ export function ProfessorList({ professores, onDelete }: ProfessorListProps) {
             <li key={p.id} className={styles.item}>
               <div className={styles.info}>
                 <strong>{p.name}</strong>
-                <span>{p.email}</span>
-                <span>Depto: {p.departamento}</span>
+                <span>{p.email ?? "Sem email"}</span>
+                <span>Depto: {p.departamento ?? "Não informado"}</span>
               </div>
-              <button className={styles.delete} onClick={() => onDelete(p.id)}>
+              <button
+                className={styles.delete}
+                onClick={() => onDelete(p.id)}
+              >
                 Excluir
               </button>
             </li>
