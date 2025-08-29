@@ -16,20 +16,41 @@ export function Moderar() {
     })
   }
 
-  // deletar professor (passado para o ProfessorList)
+  async function handleAlunoDelete(id: number) {
+    try {
+      await axios.delete(`http://localhost:8080/alunos/${id}`)
+      console.log("Aluno excluído:", id)
+    } catch (err) {
+      console.error("Erro ao excluir aluno:", err)
+    }
+  }
+
+
   async function handleProfessorDelete(id: number) {
     try {
       await axios.delete(`http://localhost:8080/professores/${id}`)
       console.log("Professor excluído:", id)
-      // o ProfessorList ainda vai mostrar os dados antigos porque ele não se atualiza sozinho
-      // se quiser, dá pra emitir um evento ou recarregar no ProfessorList
+   
     } catch (err) {
       console.error("Erro ao excluir professor:", err)
     }
   }
 
+  async function handleDisciplinaSubmit(data: { name: string; id_professor: number; carga_horaria: number }) {
+    await axios.post("http://localhost:8080/disciplinas", data, {
+      headers: { "Content-Type": "application/json" }
+    })
+  }
 
-  
+  async function handleDisciplinaDelete(id: number) {
+    try {
+      await axios.delete(`http://localhost:8080/disciplinas/${id}`)
+      console.log("Disciplina excluída:", id)
+    } catch (err) {
+      console.error("Erro ao excluir disciplina:", err)
+    }
+  }
+
   return (
     <>
       <Header pageName="Moderação" />
@@ -46,9 +67,9 @@ export function Moderar() {
           onAddAluno={(id) => console.log("Adicionar aluno disciplina:", id)}
           onDelete={(id) => console.log("Excluir disciplina:", id)}
         />
-        {/* <AlunoList alunos={[]} onDelete={(id) => console.log("Excluir aluno:", id)} /> */}
-        
-        {/* ProfessorList espera onDelete como prop */}
+        <AlunoList onDelete={handleAlunoDelete} />
+
+       
         <ProfessorList onDelete={handleProfessorDelete} />
       </div>
     </>
