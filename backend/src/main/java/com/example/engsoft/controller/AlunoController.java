@@ -1,34 +1,56 @@
 package com.example.engsoft.controller;
 
 import com.example.engsoft.model.Aluno;
-import com.example.engsoft.model.Role;
 import com.example.engsoft.repository.AlunoRepo;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/alunos")
 public class AlunoController {
-    private final AlunoRepo repository;
 
-    public AlunoController(AlunoRepo repository) {
-        this.repository = repository;
+    private final AlunoRepo alunoRepository;
+
+    public AlunoController(AlunoRepo alunoRepository) {
+        this.alunoRepository = alunoRepository;
+    }
+
+    @GetMapping
+    public List<Aluno> listar() {
+        return alunoRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Aluno> buscarPorId(@PathVariable Long id) {
+        return alunoRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public Aluno criar(@RequestBody Aluno aluno) {
-        aluno.setRole(Role.ALUNO);
-        return repository.save(aluno);
+        return alunoRepository.save(aluno);
     }
 
     @PutMapping("/{id}")
-    public Aluno atualizar(@PathVariable Long id, @RequestBody Aluno novo) {
-        return repository.findById(id)
-                .map(a -> {
-                    a.setNome(novo.getNome());
-                    a.setEmail(novo.getEmail());
-                    a.setSenha(novo.getSenha());
-                    a.setMatricula(novo.getMatricula());
-                    return repository.save(a);
-                }).orElseThrow();
+    public ResponseEntity<Aluno> atualizar(@PathVariable Long id, @RequestBody Aluno alunoAtualizado) {
+        return alunoRepository.findById(id)
+                .map(aluno -> {
+                    aluno.setName(alunoAtualizado.getName());
+                    aluno.setMatricula(alunoAtualizado.getMatricula());
+                    aluno.setDisciplinas(alunoAtualizado.getDisciplinas());
+                    return ResponseEntity.ok(alunoRepository.save(aluno));
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deletar(@PathVariable Long id) {
+        return alunoRepository.findById(id)
+                .map(aluno -> {
+                    alunoRepository.delete(aluno);
+                    return ResponseEntity.noContent().build();
+                }).orElse(ResponseEntity.notFound().build());
     }
 }

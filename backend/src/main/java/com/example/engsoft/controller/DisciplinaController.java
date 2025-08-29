@@ -2,7 +2,7 @@ package com.example.engsoft.controller;
 
 import com.example.engsoft.model.Disciplina;
 import com.example.engsoft.repository.DisciplinaRepo;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,26 +10,48 @@ import java.util.List;
 @RestController
 @RequestMapping("/disciplinas")
 public class DisciplinaController {
-    private final DisciplinaRepo repository;
 
-    public DisciplinaController(DisciplinaRepo repository) {
-        this.repository = repository;
+    private final DisciplinaRepo disciplinaRepository;
+
+    public DisciplinaController(DisciplinaRepo disciplinaRepository) {
+        this.disciplinaRepository = disciplinaRepository;
     }
 
     @GetMapping
     public List<Disciplina> listar() {
-        return repository.findAll();
+        return disciplinaRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Disciplina> buscarPorId(@PathVariable Long id) {
+        return disciplinaRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('PROFESSOR') or hasRole('ADMINISTRADOR')")
     public Disciplina criar(@RequestBody Disciplina disciplina) {
-        return repository.save(disciplina);
+        return disciplinaRepository.save(disciplina);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Disciplina> atualizar(@PathVariable Long id, @RequestBody Disciplina disciplinaAtualizada) {
+        return disciplinaRepository.findById(id)
+                .map(disciplina -> {
+                    disciplina.setName(disciplinaAtualizada.getName());
+                    disciplina.setCargaHoraria(disciplinaAtualizada.getCargaHoraria());
+                    disciplina.setProfessor(disciplinaAtualizada.getProfessor());
+                    disciplina.setAlunos(disciplinaAtualizada.getAlunos());
+                    return ResponseEntity.ok(disciplinaRepository.save(disciplina));
+                }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMINISTRADOR')")
-    public void deletar(@PathVariable Long id) {
-        repository.deleteById(id);
+    public ResponseEntity<Object> deletar(@PathVariable Long id) {
+        return disciplinaRepository.findById(id)
+                .map(disciplina -> {
+                    disciplinaRepository.delete(disciplina);
+                    return ResponseEntity.noContent().build();
+                }).orElse(ResponseEntity.notFound().build());
     }
 }
