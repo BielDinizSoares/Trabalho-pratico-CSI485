@@ -1,0 +1,73 @@
+.openButton {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.openButton:hover {
+  background-color: #45a049;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 350px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.modal h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.modal input,
+.modal textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.actions button {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.actions button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+}
+
+.actions .cancel {
+  background-color: #ccc;
+}

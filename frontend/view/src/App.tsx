@@ -4,9 +4,10 @@ import './App.css'
 import { Login } from './components/Login'
 import { StudentView } from './pages/StudentView'
 
-function Home() {
-  return <h1>Bem-vindo ao App 🚀</h1>
-}
+import { ProfessorView } from './pages/ProfessorView'
+import { DisciplinaProfessor } from './pages/DisciplinaProfessor'
+import { DisciplinaAluno } from './pages/DisciplinaAluno'
+
 
 function LoginPage() {
   return (
@@ -21,8 +22,12 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
           <Route path="/students" element={<StudentView />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/professor" element={<ProfessorView />} />
+          <Route path="/disciplinaprofessor" element={<DisciplinaProfessor />} />
+          <Route path="/disciplinasaluno" element={<DisciplinaAluno />} />
+
         </Routes>
       </Router>
     </>
