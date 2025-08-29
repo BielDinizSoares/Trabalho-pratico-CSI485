@@ -1,6 +1,7 @@
 package com.example.engsoft.model;
 
 import com.example.engsoft.model.Disciplina;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class Professor {
     private String departamento;
 
     @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Disciplina> disciplinas;
 
