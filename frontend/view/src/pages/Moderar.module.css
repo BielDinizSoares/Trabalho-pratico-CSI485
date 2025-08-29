@@ -1,0 +1,13 @@
+.formsContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2rem;
+}
+
+.listContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2rem;
+}

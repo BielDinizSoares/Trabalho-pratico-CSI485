@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { Header } from './components/Header'
 import './App.css'
 import { Login } from './components/Login'
 import { StudentView } from './pages/StudentView'
-
 import { ProfessorView } from './pages/ProfessorView'
 import { DisciplinaProfessor } from './pages/DisciplinaProfessor'
 import { DisciplinaAluno } from './pages/DisciplinaAluno'
+import {Moderar} from './pages/Moderar'
+
 
 
 function LoginPage() {
@@ -22,6 +22,7 @@ function App() {
     <>
       <Router>
         <Routes>
+          <Route path= "/" element={<Moderar />} />
           <Route path="/students" element={<StudentView />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/professor" element={<ProfessorView />} />
