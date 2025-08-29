@@ -2,6 +2,8 @@ package com.example.engsoft.model;
 
 import com.example.engsoft.model.Professor;
 import com.example.engsoft.model.Tarefa;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,12 +22,14 @@ public class Disciplina {
     private Integer cargaHoraria;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "id_professor")
     private Professor professor;
 
     @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tarefa> tarefas;
 
+    @JsonManagedReference
     @ManyToMany(mappedBy = "disciplinas")
     private List<Aluno> alunos;
 }

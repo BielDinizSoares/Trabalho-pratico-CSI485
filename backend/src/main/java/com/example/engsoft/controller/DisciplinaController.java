@@ -34,14 +34,22 @@ public class DisciplinaController {
         return disciplinaRepository.save(disciplina);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Disciplina> atualizar(@PathVariable Long id, @RequestBody Disciplina disciplinaAtualizada) {
+    @PatchMapping("/{id}")
+    public ResponseEntity<Disciplina> atualizarParcial(@PathVariable Long id, @RequestBody Disciplina disciplinaAtualizada) {
         return disciplinaRepository.findById(id)
                 .map(disciplina -> {
-                    disciplina.setName(disciplinaAtualizada.getName());
-                    disciplina.setCargaHoraria(disciplinaAtualizada.getCargaHoraria());
-                    disciplina.setProfessor(disciplinaAtualizada.getProfessor());
-                    disciplina.setAlunos(disciplinaAtualizada.getAlunos());
+                    if (disciplinaAtualizada.getName() != null) {
+                        disciplina.setName(disciplinaAtualizada.getName());
+                    }
+                    if (disciplinaAtualizada.getCargaHoraria() != null) {
+                        disciplina.setCargaHoraria(disciplinaAtualizada.getCargaHoraria());
+                    }
+                    if (disciplinaAtualizada.getProfessor() != null) {
+                        disciplina.setProfessor(disciplinaAtualizada.getProfessor());
+                    }
+                    if (disciplinaAtualizada.getAlunos() != null) {
+                        disciplina.setAlunos(disciplinaAtualizada.getAlunos());
+                    }
                     return ResponseEntity.ok(disciplinaRepository.save(disciplina));
                 }).orElse(ResponseEntity.notFound().build());
     }
