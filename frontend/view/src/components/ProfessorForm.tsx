@@ -1,22 +1,34 @@
-import { useState } from "react"
-import styles from "./Form.module.css"
+import { useState } from "react";
+import styles from "./Form.module.css";
+import axios from "axios";
 
-interface ProfessorFormProps {
-  onSubmit: (data: { name: string; email: string; departamento: string }) => void
-}
+export function ProfessorForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [departamento, setDepartamento] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
-export function ProfessorForm({ onSubmit }: ProfessorFormProps) {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [departamento, setDepartamento] = useState("")
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!name.trim() || !email.trim()) return;
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    if (!name.trim() || !email.trim()) return
-    onSubmit({ name, email, departamento })
-    setName("")
-    setEmail("")
-    setDepartamento("")
+    const professorData = { name, email, departamento };
+
+    try {
+      await axios.post("http://localhost:8080/professores", professorData, {
+        headers: { "Content-Type": "application/json" }
+      });
+      setSuccess(true);
+      setError("");
+      setName("");
+      setEmail("");
+      setDepartamento("");
+    } catch (err) {
+      console.error(err);
+      setError("Erro ao cadastrar professor. Verifique os dados.");
+      setSuccess(false);
+    }
   }
 
   return (
@@ -43,6 +55,9 @@ export function ProfessorForm({ onSubmit }: ProfessorFormProps) {
         onChange={(e) => setDepartamento(e.target.value)}
       />
       <button type="submit">Salvar</button>
+
+      {success && <p style={{ color: "green" }}>Professor cadastrado com sucesso!</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </form>
-  )
+  );
 }

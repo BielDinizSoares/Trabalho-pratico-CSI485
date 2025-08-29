@@ -28,6 +28,8 @@ export function Moderar() {
     }
   }
 
+
+  
   return (
     <>
       <Header pageName="Moderação" />
