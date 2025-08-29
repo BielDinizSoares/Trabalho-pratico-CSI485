@@ -2,6 +2,7 @@ package com.example.engsoft.model;
 
 import com.example.engsoft.model.Disciplina;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;

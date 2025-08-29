@@ -1,23 +1,83 @@
-.container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 2rem;
-    gap: 2rem;
+.formsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;   /* centraliza horizontalmente */
+  align-items: center;       /* centraliza verticalmente */
+  padding: 4rem;
+  gap: 4rem;                 /* aumenta espaço entre os forms */
+}
+.formsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;   /* centraliza horizontalmente */
+  align-items: center;       /* centraliza verticalmente */
+  padding: 4rem;
+  gap: 4rem;                 /* aumenta espaço entre os forms */
+}
+.listsContainer {
+  display: flex;
+  flex-direction: row;        /* coloca as listas lado a lado */
+  justify-content: center;    /* centraliza o conjunto de listas */
+  align-items: flex-start;    /* alinha pelo topo */
+  gap: 2rem;                  /* espaço entre as listas */
+  padding: 2rem;
+  flex-wrap: wrap;            /* permite quebrar linha se a tela for pequena */
 }
 
-
-.formsContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 4rem;
-    
+.list {
+  flex: 1 1 300px;            /* cada lista ocupa no mínimo 300px e cresce proporcionalmente */
+  width: 600px;           /* largura máxima da lista */
+  height: 300px;              /* altura fixa */
+  overflow-y: auto;           /* scroll próprio */
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
 }
 
-.listContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 2rem;
+.list h2 {
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+}
+
+.list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info strong {
+  font-size: 1.1rem;
+}
+
+.delete {
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.delete:hover {
+  opacity: 0.9;
 }

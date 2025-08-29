@@ -1,26 +1,38 @@
 import { useState } from "react"
 import styles from "./Form.module.css"
+import axios from "axios"
 
-interface DisciplinaFormProps {
-  onSubmit: (data: { name: string; id_professor: number; carga_horaria: number }) => void
-}
-
-export function DisciplinaForm({ onSubmit }: DisciplinaFormProps) {
+export function DisciplinaForm() {
   const [name, setName] = useState("")
   const [idProfessor, setIdProfessor] = useState("")
   const [cargaHoraria, setCargaHoraria] = useState("")
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState("")
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!name.trim() || !idProfessor) return
-    onSubmit({
+    if (!name.trim() || !idProfessor.trim()) return
+
+    const disciplinaData = {
       name,
       id_professor: parseInt(idProfessor),
       carga_horaria: parseInt(cargaHoraria) || 0,
-    })
-    setName("")
-    setIdProfessor("")
-    setCargaHoraria("")
+    }
+
+    try {
+      await axios.post("http://localhost:8080/disciplinas", disciplinaData, {
+        headers: { "Content-Type": "application/json" }
+      })
+      setSuccess(true)
+      setError("")
+      setName("")
+      setIdProfessor("")
+      setCargaHoraria("")
+    } catch (err) {
+      console.error(err)
+      setError("Erro ao cadastrar disciplina. Verifique os dados.")
+      setSuccess(false)
+    }
   }
 
   return (
@@ -47,6 +59,9 @@ export function DisciplinaForm({ onSubmit }: DisciplinaFormProps) {
         onChange={(e) => setCargaHoraria(e.target.value)}
       />
       <button type="submit">Salvar</button>
+
+      {success && <p style={{ color: "green" }}>Disciplina cadastrada com sucesso!</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </form>
   )
 }
