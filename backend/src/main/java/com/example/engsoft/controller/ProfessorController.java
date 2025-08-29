@@ -60,4 +60,9 @@ public class ProfessorController {
                     return ResponseEntity.noContent().build();
                 }).orElse(ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/professores-com-disciplinas")
+    public List<Professor> getProfessoresComDisciplinas() {
+        return professorRepository.findAll();
+    }
 }

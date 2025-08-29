@@ -31,7 +31,7 @@ public class Disciplina {
     @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tarefa> tarefas;
 
-    @JsonManagedReference
     @ManyToMany(mappedBy = "disciplinas")
+    @JsonIgnoreProperties("disciplinas")
     private List<Aluno> alunos;
 }
