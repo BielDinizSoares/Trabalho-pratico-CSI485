@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react"
 import styles from "./ProfessorList.module.css"
+import axios from "axios";
 
 export interface Professor {
   id: number
@@ -8,34 +10,35 @@ export interface Professor {
 }
 
 interface ProfessorListProps {
-  professores: Professor[]
   onDelete: (professorId: number) => void
 }
 
-export function ProfessorList({ professores, onDelete }: ProfessorListProps) {
+export function ProfessorList({ onDelete }: ProfessorListProps) {
+  const [professores, setProfessores] = useState<Professor[]>([]);
+
+  useEffect(() => {
+    axios.get<Professor[]>("http://localhost:8080/professores")
+      .then(res => setProfessores(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <div className={styles.list}>
-      <h2>Lista de Professores</h2>
-      {professores.length === 0 ? (
-        <p>Nenhum professor cadastrado.</p>
-      ) : (
+      <h2>Professores</h2>
+      {professores.length > 0 ? (
         <ul>
-          {professores.map((p) => (
+          {professores.map(p => (
             <li key={p.id} className={styles.item}>
-              <div className={styles.info}>
-                <strong>{p.name}</strong>
-                <span>{p.email ?? "Sem email"}</span>
-                <span>Depto: {p.departamento ?? "Não informado"}</span>
-              </div>
-              <button
-                className={styles.delete}
-                onClick={() => onDelete(p.id)}
-              >
-                Excluir
-              </button>
+                <div className={styles.info}></div>
+          <strong>{p.name}</strong>
+                
+                <span>Departamento: {p.departamento}</span>
+              <button onClick={() => onDelete(p.id)}>Excluir</button>
             </li>
           ))}
         </ul>
+      ) : (
+        <p>Sem professores</p>
       )}
     </div>
   )
