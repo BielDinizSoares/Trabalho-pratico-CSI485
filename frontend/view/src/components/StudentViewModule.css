@@ -1,0 +1,85 @@
+.student-view {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 700px;
+  font-family: Arial, sans-serif;
+}
+
+.student-view h2 {
+  margin: 1.5rem 0 1rem;
+  font-size: 1.5rem;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+.disciplina, .professor {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.disciplina h3, .professor h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.tarefas {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 0;
+}
+
+.tarefas li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.tarefas li:last-child {
+  border-bottom: none;
+}
+
+.professor-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.professor-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.professor-list li:last-child {
+  border-bottom: none;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info strong {
+  font-size: 1.1rem;
+}
+
+.logout-button {
+  background: #f44336; /* vermelho */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 1rem;
+}
+
+.logout-button:hover {
+  background: #d32f2f; /* vermelho mais escuro no hover */
+}
+
+
